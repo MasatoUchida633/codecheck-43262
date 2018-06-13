@@ -9,7 +9,14 @@ public class App {
 			String argStr = args[i];
 			int argNum;
 			
-			// 引数が整数かの精査
+			// 引数が半角数字のみかの精査
+			boolean isHalfwidthDigit = argStr.matches("^\\d*$");
+			if (!isHalfwidthDigit) {
+				System.out.println("invalid");
+				continue;
+			}
+			
+			// 引数の数値変換
 			try {
 				argNum = Integer.parseInt(argStr);
 			} catch(NumberFormatException e) {
